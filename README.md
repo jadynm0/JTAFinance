@@ -168,39 +168,60 @@ A household is classified as **At Risk** if:
 
 ## 3. Simulate shocks
 
+This section simulates multiple economic shock scenarios and measures how financial vulnerability changes relative to baseline conditions.
+
+## Shock types simulated:
+
+- Expense inflation (increase in annual expenses)
+- Income reduction (decrease in after-tax income)
+- Mortgage cost increase (for homeowners)
+- Rent increase (for renters)
+
+## For each shock:
+
+- Liquidity runway is recalculated
+- Housing burden is recomputed
+- Debt-to-income proxy is updated when income changes
+- A new at-risk classification is generated
+- Newly vulnerable households are identified
+
+## Outputs include:
+
+- % newly vulnerable by age group
+- Baseline vs post-shock comparisons
+- At-risk rate vs shock severity curves
+- Shock sensitivity by demographic group
+
+## 4.  Exploratory Risk Modeling (Interpretability)
+
 Model: **Random Forest Classifier**
 
-Validation: 
-- Train/Test split 
-- ROC-AUC 
-- F1 Score 
-- Confusion Matrix
+The model is trained on the available dataset to explore which financial characteristics are most associated with baseline vulnerability (Is_At_Risk_Base).
 
-Interpretability: 
-- Random Forest Feature Importance 
-- Permutation Importance
+This modeling stage is exploratory and interpretative rather than a fully validated predictive benchmark.
 
-## 4. Stress Testing
+Interpretability tools:
+
+- Random Forest feature importance
+- Permutation importance (shuffle-based importance test)
+
+The goal is to identify key financial drivers of vulnerability rather than optimize out-of-sample prediction accuracy.
+
+## 5. Stress Testing
 Simulates adverse economic scenarios to measure how financial vulnerability increases under shock conditions.
 
 Simulates multiple economic shocks:
 
 - Expense inflation (0–30%)
-
 - Income reduction (0–30%)
-
 - Mortgage cost increase
-
 - Rent increase
 
 Outputs:
 
 - At-risk rate vs shock curve
-
 - Newly vulnerable share
-
 - Age group breakdown
-
 - Shock sensitivity (risk increase per 1% shock)
 
 
