@@ -37,7 +37,7 @@ Pre-processed subset included in repository.
     ├── README.md
     └── requierment.txt
 
-You only need the notebook and dataset to run the project.
+You only need the notebook + dataset (plus the packages below).
 
 ------------------------------------------------------------------------
 # Setup Instructions (Mac / Windows / Linux)
@@ -87,6 +87,11 @@ After activation, your terminal should show something like `(.venv)` at the begi
 ``` bash
 python -m pip install --upgrade pip
 python -m pip install pandas numpy matplotlib seaborn scikit-learn openpyxl jupyter ipykernel
+```
+or 
+``` bash
+python3 -m pip install --upgrade pip
+python3 -m pip install -r requirements.txt
 ```
 
 Packages used in the notebook:
