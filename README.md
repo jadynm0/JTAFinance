@@ -43,6 +43,7 @@ You only need the notebook and dataset to run the project.
 # Setup Instructions (Mac / Windows / Linux)
 
 ## 1. Clone or Download
+If you are using Git:
 
 ``` bash
 git clone <your_repo_url>
@@ -50,9 +51,15 @@ cd JTAFinance
 ```
 
 Or download the ZIP and open the folder.
+If you downloaded a ZIP:
+- Extract the ZIP
+- Open the extracted folder
+- Make sure `Datathon-Personal-Finance.ipynb` and `personal_finance_dataset.xlsx` are both inside that folder
 
 
 ## 2. Create Virtual Environment
+
+A virtual environment keeps the project packages separate from the rest of your computer.
 
 ### Mac/Linux
 
@@ -67,30 +74,54 @@ source .venv/bin/activate
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 ```
+If PowerShell blocks activation, run this once in PowerShell and try again:
 
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+After activation, your terminal should show something like `(.venv)` at the beginning of the line.
 
 ## 3. Install Required Packages
 
 ``` bash
 python -m pip install --upgrade pip
-python -m pip install numpy pandas matplotlib seaborn scikit-learn openpyxl
+python -m pip install pandas numpy matplotlib seaborn scikit-learn openpyxl jupyter ipykernel
 ```
 
-Required libraries: - numpy - pandas - matplotlib - seaborn -
-scikit-learn - openpyxl (for Excel reading)
+Packages used in the notebook:
+- `pandas`
+- `numpy`
+- `matplotlib`
+- `seaborn`
+- `scikit-learn`
+- `openpyxl`
+- `jupyter`
+- `ipykernel`
+
+### 4) Make the environment show up as a notebook kernel
+
+Run:
+
+```bash
+python -m ipykernel install --user --name jtafinance-venv --display-name "Python (jtafinance-venv)"
+```
+
+This makes it easier to select the correct kernel in VS Code or Jupyter.
 
 ------------------------------------------------------------------------
 # How to Run the Project
 
 ## Option A - VS Code (Recommended)
 
-1.  Open folder in VS Code
-2.  Install extensions if prompted:
-    -   Python
-    -   Jupyter
-3.  Open `Datathon-Personal-Finance.ipynb`
-4.  Select kernel: `.venv (Python 3.x)`
-5.  Click **Run All**
+1. Open the project folder in VS Code
+2. Open `Datathon-Personal-Finance.ipynb`
+3. In the top right, select the kernel named:
+   - **Python (jtafinance-venv)**
+   - or your `.venv` Python environment
+4. Run the notebook from top to bottom
+   - Use **Run All** if you want everything
+   - Or run cell by cell in order
 
 
 ## Option B - Jupyter Notebook
@@ -130,7 +161,7 @@ A household is classified as **At Risk** if:
 -   Debt-to-income \> 50%, or
 -   Skipped payments, or
 
-## 3. Predictive Modeling
+## 3. Simulate shocks
 
 Model: **Random Forest Classifier**
 
@@ -185,6 +216,18 @@ Produces:
 
 ------------------------------------------------------------------------
 
+## Expected outputs
+
+If the notebook runs correctly, you should get:
+- printed data previews
+- summary tables by age group
+- bar charts for different shock scenarios
+- permutation importance chart
+- persona risk chart
+- stress test line charts
+
+------------------------------------------------------------------------
+
 # Modeling Assumptions & Threshold Justification
 To ensure interpretability and policy relevance, the following thresholds were used:
 
@@ -220,7 +263,17 @@ A recent Rentals.ca survey shows that more than 60% of renters already spend ove
 So we assume renting expenses for renter is rougly 30% of the post tax income 
 
 ## citation 
+“Average Rental Price in Toronto, on & Market Trends | Zillow Rental Manager.” Zillow.com, 2024, www.zillow.com/rental-manager/market-trends/toronto-on/. 
+
+Canada, Financial Consumer Agency of. “Government of Canada.” Canada.Ca, / Gouvernement du Canada, 20 Oct. 2025, www.canada.ca/en/financial-consumer-agency/services/savings-investments/setting-up-emergency-funds.html. 
+
+“Calculating GDS / TDS.” CMHC, 31 Mar. 2018, www.cmhc-schl.gc.ca/professionals/project-funding-and-mortgage-financing/mortgage-loan-insurance/calculating-gds-tds.
+
 “Current Toronto Mortgage Rates | Best Mortgage Rates in Canada - RATESDOTCA.” Rates.ca, rates.ca/mortgage-rates/toronto.
+
+Immigration, Refugees and Citizenship Canada. “Prepare Financially.” Canada.Ca, / Gouvernement du Canada, 15 July 2025, www.canada.ca/en/immigration-refugees-citizenship/services/settle-canada/prepare-financially.html. 
+
+Naik, Miral. “Debt-To-Income Ratio: What’s It All About?” Consolidated Credit Counselling Services of Canada, Consolidated Credit Canada, 23 July 2025, www.consolidatedcreditcanada.ca/financial-news/debt-to-income-ratio-whats-it-all-about/ 
 
 Melgar, Alejandro. “Around 30% of Canadian Renters Spend 50% of Income on Rent: Survey.” CityNews Calgary, 21 Dec. 2025, calgary.citynews.ca/2025/12/21/canadian-renters-30-percent-half-income-rent-survey/ 
 
@@ -235,31 +288,41 @@ Findings can informs:
 
 ### Policymakers
 
--   Rent relief targeting
--   Student debt programs
--   Liquidity buffers
+- Identify households most vulnerable to income or rent shocks
+- Design targeted emergency savings programs
+- Prioritize rental assistance or income stabilization support
 
 ### Universities
 
--   Emergency student grants
--   Financial literacy programming
+-  Detect high-risk student populations
+- Improve financial literacy programming
+- Develop emergency grant allocation strategies
 
 ### Financial Institutions
 
--   Risk-adjusted product design
--   Targeted advisory services
+-  Improve risk assessment models
+- Design savings buffer products
+- Identify clients vulnerable to rate shocks
+
+## Economic Planning
+
+- Stress-test population-level financial resilience
+- Evaluate how inflation or income volatility affects different age groups
 
 ------------------------------------------------------------------------
 
 #  Reproducibility
 
-To reproduce results:
+Before running, confirm all of these are true:
 
-1.  Activate virtual environment
-2.  Install packages
-3.  Run notebook top-to-bottom
-
-If kernel restarts, rerun all cells.
+- Python is installed
+- The virtual environment is activated
+- All packages are installed
+- The notebook and Excel file are in the same folder
+- The Excel file is named `personal_finance_dataset.xlsx`
+- The Excel sheet is named `datathon_finance`
+- The correct kernel is selected
+- You are running cells from top to bottom
 
 ------------------------------------------------------------------------
 
