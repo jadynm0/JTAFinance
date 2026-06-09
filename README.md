@@ -369,3 +369,4 @@ the team.
 -   Jadyn Mo
 -   Tamima Wadageri
 
+DEVPOST LINK: https://devpost.com/software/jtafinance
